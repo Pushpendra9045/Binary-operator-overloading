@@ -1,0 +1,49 @@
+// program to understand the concept of binary overloading
+
+#include<iostream>
+using  namespace std;
+class addition{
+    public:
+    int num1,num2;
+    // No Parameter Constructor
+    addition()
+    {
+        this->num1=0;
+        this->num2=0;
+    }
+    // Constructor to initialize the object's value
+    // Parameterized Constructor
+    addition(int a,int b)
+    {
+        this->num1=a;
+        this->num2=b;
+    }
+     // Overloading (+) operator to perform addition of
+    // two distance object
+    addition operator +(addition& ad2)  // Call by reference
+    {
+        addition ad3; // Create an object to return
+        
+        // Perform addition of num1 and num2
+        ad3.num1=this->num1+ad2.num1;
+        ad3.num2=this->num2+ad2.num2;
+        
+        // Return the resulting object
+        return ad3;
+    }
+    
+};
+int main()
+{
+     // Declaring and Initializing first object
+    addition ad1(34,45);
+    // Declaring and Initializing second object
+    addition ad2(56,23);
+     // Declaring third object
+    addition ad3;
+    // Use overloaded operator
+    ad3=ad2+ad1;
+     // Display the result
+    cout<<"The sum of the numbers are "<<ad3.num1<<","<<ad3.num2<<endl;
+    return 0;
+}
